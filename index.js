@@ -4,8 +4,11 @@ import userRouter from "./router/userRouter.js";
 import productRouter from "./router/productRouter.js";
 import authorizeUser from "./lib/jwtMiddleware.js";
 import cors from 'cors'
+import dotenv from 'dotenv'
 
-const mongoURI="mongodb+srv://ravindushehan200122_db_user:1234@cluster0.rnutf4q.mongodb.net/?appName=Cluster0";
+dotenv.config()
+
+const mongoURI= process.env.MONGO_URI;
 
 
 mongoose.connect(mongoURI).then(
