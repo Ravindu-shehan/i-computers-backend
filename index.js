@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import userRouter from "./router/userRouter.js";
 import productRouter from "./router/productRouter.js";
 import authorizeUser from "./lib/jwtMiddleware.js";
+import cors from 'cors'
 
 const mongoURI="mongodb+srv://ravindushehan200122_db_user:1234@cluster0.rnutf4q.mongodb.net/?appName=Cluster0";
 
@@ -18,6 +19,8 @@ mongoose.connect(mongoURI).then(
 )
 
 const app = express();
+
+app.use( cors())
 
 app.use(express.json());
 
