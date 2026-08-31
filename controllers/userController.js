@@ -60,7 +60,7 @@ export function loginUser(req, res) {
     ).then(
         (user)=>{
             if(user == null){
-                res.json({
+                res.status(404).json({
                     message: "User with given email not found"
                 }); 
             }else{
@@ -78,15 +78,16 @@ export function loginUser(req, res) {
                     },
                     process.env.JWT_SECRET);
 
-                    console.log(token);
+                    //console.log(token);
 
                     res.json({
                         message: "Login successful",
                         token: token,
+                        role: user.role,
                     });
                 }else{
                     res.status(401).json({
-                        message: "Invalid password"
+                        message: "Invalid password" 
                     });
                 }
             }
